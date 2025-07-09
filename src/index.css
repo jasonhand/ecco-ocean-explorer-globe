@@ -2,95 +2,152 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* ECCO Ocean Visualization Design System */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Ocean-themed color palette */
+    --background: 218 23% 4%;
+    --foreground: 195 20% 95%;
+    
+    --card: 220 25% 8%;
+    --card-foreground: 195 20% 95%;
+    
+    --popover: 220 25% 8%;
+    --popover-foreground: 195 20% 95%;
+    
+    /* Ocean blue primary */
+    --primary: 204 80% 52%;
+    --primary-foreground: 195 20% 95%;
+    --primary-glow: 204 80% 65%;
+    
+    /* Deep ocean secondary */
+    --secondary: 215 25% 15%;
+    --secondary-foreground: 195 20% 85%;
+    
+    --muted: 215 20% 12%;
+    --muted-foreground: 195 15% 65%;
+    
+    /* Coral accent for highlights */
+    --accent: 14 90% 65%;
+    --accent-foreground: 220 25% 8%;
+    
+    /* Warning colors for data alerts */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 195 20% 95%;
+    
+    --border: 215 25% 18%;
+    --input: 215 25% 18%;
+    --ring: 204 80% 52%;
+    
+    --radius: 0.75rem;
+    
+    /* Ocean gradients */
+    --gradient-ocean: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-depth: linear-gradient(180deg, hsl(var(--primary)), hsl(215 80% 25%));
+    --gradient-surface: linear-gradient(90deg, hsl(var(--primary-glow)), hsl(var(--accent)));
+    
+    /* Atmospheric effects */
+    --shadow-ocean: 0 20px 40px -15px hsl(var(--primary) / 0.3);
+    --shadow-depth: 0 10px 30px -10px hsl(215 80% 25% / 0.4);
+    --shadow-glow: 0 0 50px hsl(var(--primary-glow) / 0.2);
+    
+    /* Animation timing */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-wave: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+  .light {
+    --background: 195 20% 96%;
+    --foreground: 215 25% 15%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 15%;
+    
+    --primary: 204 80% 42%;
+    --primary-glow: 204 80% 55%;
+    
+    --secondary: 195 15% 90%;
+    --secondary-foreground: 215 25% 25%;
+    
+    --muted: 195 10% 92%;
+    --muted-foreground: 215 15% 45%;
+    
+    --border: 195 15% 85%;
+    --input: 195 15% 88%;
+    
+    --shadow-ocean: 0 20px 40px -15px hsl(var(--primary) / 0.2);
+  }
+}
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.2;
+  }
+}
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+@layer components {
+  /* Ocean wave animation */
+  .wave-animation {
+    background: linear-gradient(-45deg, 
+      hsl(var(--primary)), 
+      hsl(var(--primary-glow)), 
+      hsl(var(--primary)), 
+      hsl(204 70% 45%)
+    );
+    background-size: 400% 400%;
+    animation: wave 8s ease-in-out infinite;
+  }
+  
+  @keyframes wave {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  
+  /* Floating elements */
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  /* Data visualization effects */
+  .data-glow {
+    box-shadow: var(--shadow-ocean);
+    transition: var(--transition-smooth);
+  }
+  
+  .data-glow:hover {
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-2px);
+  }
+  
+  /* Control panel styles */
+  .control-panel {
+    backdrop-filter: blur(20px) saturate(180%);
+    background: hsl(var(--card) / 0.8);
+    border: 1px solid hsl(var(--border) / 0.5);
+  }
+  
+  /* Scientific chart styling */
+  .scientific-chart {
+    background: hsl(var(--card));
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-depth);
   }
 }
 
